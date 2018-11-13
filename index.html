@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">2d QR Code Here</label>
+          <input type="text" class="form-control" id="barcode" aria-describedby="emailHelp" placeholder="2d Bar Code" >
+        </div>
+        <button id="test" type="button" class="btn btn-primary">Submit</button>
+        <button id="clear" type="button" class="btn btn-primary">Clear</button>
+      </form>
+      <table class="table table-bordered"> 
+    
+        <tbody id="data"> 
+          
+        </tbody> 
+      </table>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="bark.js"></script>
+    <script>
+
+
+
+    $( document ).ready(function() {
+
+
+
+      /*var ex = "010035024208003321100048346700481720123110B0019B03";
+      for (let index = 0; index < barcode.length; index++) {
+        
+      }
+
+      if(ex.substr)
+*/
+
+        $("#test").click(function(){
+             var barcode = document.getElementById("barcode").value;
+            //for (let index = 0; index < barcode.length; index++) {
+             // const element = barcode[index];
+              //console.log(barcode[index]+barcode[index+1]);
+              //if (barcode[index]+barcode[index+1]=="01") {
+                //console.log("GTIN");
+                //console.log(barcode.substring(0,15));
+                //console.log(barcode.substring(16,32));
+                //console.log(barcode.substring(32,40));
+                //console.log(barcode.substring(41,50));
+                var gtin = barcode.substring(2,16);
+                var serial = barcode.substring(18,32);
+                var exp_date = barcode.substring(34,40);
+                var lot = barcode.substring(42);
+                var t = '<tr><th>GTIN</th><th>'+gtin+'</th></tr><tr><th>SERIAL</th><th>'+serial+'</th></tr><tr><th>EXP DATE</th><th>'+exp_date+'</th></tr><tr><th>LOT</th><th>'+lot+'</th></tr> ';
+                $('#data').html(t); 
+
+          
+          
+          
+              //}
+              
+            //}
+        });
+        $("#clear").click(function(){
+          document.getElementById("barcode").value = '';
+          $('#data').html('');
+        });
+
+    });
+
+
+
+
+    </script>
+</body>
+</html>
